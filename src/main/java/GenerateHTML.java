@@ -2,14 +2,17 @@ import java.io.*;
 import java.util.*;
 
 public class GenerateHTML {
+
+    FileManager fileManager = new FileManager();
+    PrintWriter fileOut;
+
     public void index() {
 
         //Variable
-        FileManager fileManager = new FileManager();
         fileManager.createArrayAgents();
         Scanner scanner = new Scanner(System.in);
         Scanner fileIn; //input file connection
-        PrintWriter fileOut; //HTML file connection
+        //HTML file connection
         String line = null; // a line from the input file
 
         File fileindex = new File("index.html");
@@ -46,6 +49,29 @@ public class GenerateHTML {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+    }
+
+
+    public void agents() {
+        FileManager fileManager = new FileManager();
+        ArrayList<String> agents = fileManager.getListagents();
+
+        for (String string : agents) {
+
+            File fileindex = new File(string+".html");
+
+            try {
+                if (!fileindex.exists()) {
+                    fileindex.createNewFile();
+                }
+            }catch (IOException e) {
+                // Print the exception
+                System.out.print(e.getMessage());
+            }
+            fileOut = new PrintWriter(fileindex);
+
+        }
+
     }
 }
 

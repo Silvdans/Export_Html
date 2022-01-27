@@ -8,11 +8,17 @@ import java.util.HashMap;
 public class FileManager {
 
     private final HashMap<String,String> map = new HashMap<>();
+    private ArrayList<String> listagents;
 
-    public void createItemHashMap(){
+    public FileManager(){
+        listagents = new ArrayList<>();
+    }
+
+    public void createItemHashMapObjet(){
         try{
             File file = new File("GO_Securi_Groupe_3/liste.txt");
             FileReader fr = new FileReader(file);
+
             BufferedReader br = new BufferedReader(fr);
             ArrayList<String> list = new ArrayList<>();
 
@@ -37,7 +43,34 @@ public class FileManager {
             e.printStackTrace();
         }
     }
-    public void generateHtml(){
 
+    public void createArrayAgents(){
+        try{
+            File file = new File("GO_Securi_Groupe_3/agents.txt");
+           // C:\Users\Mathi\IdeaProjects\
+            FileReader fr2 = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr2);
+            String line;
+            while((line = br.readLine()) != null)
+            {
+                this.listagents.add(line);
+            }
+            fr2.close();
+
+            for(String string : this.listagents){
+                System.out.println(string);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> getListagents() {
+        return this.listagents;
+    }
+
+    public void setListagents(ArrayList<String> listagents) {
+        this.listagents = listagents;
     }
 }

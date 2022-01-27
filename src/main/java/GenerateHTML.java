@@ -17,17 +17,8 @@ public class GenerateHTML {
 
     public void createIndexPage() {
 
-        fileManager.createArrayAgents();
         File fileindex = new File("html/index.html");
 
-        try {
-            if (!fileindex.exists()) {
-                fileindex.createNewFile();
-            }
-        }catch (IOException e) {
-            // Print the exception
-            System.out.print(e.getMessage());
-        }
         try {
             fileOut = new PrintWriter(fileindex);
             // Ouverture des TAGS HTML
@@ -38,6 +29,7 @@ public class GenerateHTML {
 
             //PRINT de la list d'agents
             for (String string : this.agents) {
+                System.out.println(string);
                 fileOut.println("   <br>");
                 fileOut.println("<a href="+string+".html>"+string+"</a>");
                 fileOut.println("   <br>");

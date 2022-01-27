@@ -67,10 +67,31 @@ public class GenerateHTML {
                 System.out.print(e.getMessage());
             }
             // Ouverture tags
-            fileOut.println("<html>");
-            fileOut.println("<head>");
-            fileOut.println("</head>");
-            fileOut.println("<body>");
+            fileOut.println("<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                    "    <title>Document</title>\n" +
+                    "    <link rel=\"stylesheet\" href=\"style.css\">\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "\n" +
+                    "    <!-- back pour retourner à la liste des agents -->\n" +
+                    "\n" +
+                    "    <a href=\"\" class=\"retour\"><img src=\"back.png\" alt=\"\"> <p>Retour à la liste des agents</p></a>\n" +
+                    "\n" +
+                    "    <!-- Main pour l'affihage des données -->\n" +
+                    "    <section id=\"main\">\n" +
+                    "\n" +
+                    "        <div class=\"head\">\n" +
+                    "            <div class=\"identification\"> NOM </div>\n" +
+                    "            <div class=\"photo\"></div>\n" +
+                    "        </div>\n" +
+                    "\n" +
+                    "        <!-- Listes des items -->\n" +
+                    "        <div class=\"objets\">");
 
             //Trouver le fichier
 
@@ -84,10 +105,15 @@ public class GenerateHTML {
                 else{
                     check ="";
                 }
+                fileOut.println("<div>");
                 fileOut.println("<label for=\"coding\">"+value+"</label>");
                 fileOut.println("<input type=\"checkbox\" id=\"coding\" name=\"interest\" value=\"coding\" onclick=\"return false;\""+check+">");
+                fileOut.println("</div>");
+
             }
             // Fermeture des TAGS HTML
+            fileOut.println("</div>");
+            fileOut.println("</section>");
             fileOut.println("</body>");
             fileOut.println("</html>");
             fileOut.close();

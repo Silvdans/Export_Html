@@ -56,7 +56,7 @@ public class GenerateHTML {
         ArrayList<String >items;
         for (String string : this.agents) {
             //création du fichier s'il n'existe pas
-            File fileindex = new File(string+".html");
+            File fileindex = new File("HTML/"+string+".html");
             try {
                 fileOut = new PrintWriter(fileindex);
                 if (!fileindex.exists()) {
@@ -75,7 +75,6 @@ public class GenerateHTML {
             //Trouver le fichier
 
             items = fileManager.getListObjectAffectedToAgent(string);
-            System.out.println(items);
             String check;
             for (String objet : fileManager.getMap().keySet()){
                 String value = fileManager.getMap().get(objet);

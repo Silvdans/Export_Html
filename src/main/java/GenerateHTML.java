@@ -56,7 +56,7 @@ public class GenerateHTML {
         ArrayList<String >items;
         for (String string : this.agents) {
             //création du fichier s'il n'existe pas
-            File fileindex = new File("HTML/"+string+".html");
+            File fileindex = new File("html/"+string+".html");
             try {
                 fileOut = new PrintWriter(fileindex);
                 if (!fileindex.exists()) {

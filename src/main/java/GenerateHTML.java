@@ -61,6 +61,7 @@ public class GenerateHTML {
             File fileindex = new File(string+".html");
 
             try {
+                fileOut = new PrintWriter(fileindex);
                 if (!fileindex.exists()) {
                     fileindex.createNewFile();
                 }
@@ -68,7 +69,8 @@ public class GenerateHTML {
                 // Print the exception
                 System.out.print(e.getMessage());
             }
-            fileOut = new PrintWriter(fileindex);
+
+
 
         }
 

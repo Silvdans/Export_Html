@@ -43,7 +43,8 @@ public class GenerateHTML {
             System.out.println("File not found");
         }
     }
-    public void createHtmlForEachAgents() {
+
+    public void createHtmlForEachAgents() throws IOException {
         FileManager fileManager = new FileManager();
         ArrayList<String >items;
         for (String string : this.agents) {
@@ -72,13 +73,13 @@ public class GenerateHTML {
                     "\n" +
                     "    <!-- back pour retourner à la liste des agents -->\n" +
                     "\n" +
-                    "    <a href=\"\" class=\"retour\"><img src=\"back.png\" alt=\"\"> <p>Retour à la liste des agents</p></a>\n" +
+                    "    <a href=\"index.html\" class=\"retour\"><img src=\"back.png\" alt=\"\"> <p>Retour à la liste des agents</p></a>\n" +
                     "\n" +
                     "    <!-- Main pour l'affihage des données -->\n" +
                     "    <section id=\"main\">\n" +
                     "\n" +
                     "        <div class=\"head\">\n" +
-                    "            <div class=\"identification\"> NOM </div>\n" +
+                    "            <div class=\"identification\">"+fileManager.getFirstName(string)+" "+fileManager.getLastName(string)+"</div>\n" +
                     "            <div class=\"photo\"></div>\n" +
                     "        </div>\n" +
                     "\n" +

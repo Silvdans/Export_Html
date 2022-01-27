@@ -2,6 +2,7 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,7 +18,12 @@ public class FileManager {
         createArrayAgents();
         createItemHashMapObjet();
     }
-
+    public String getFirstName(String agent) throws IOException {
+        return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(1);
+    }
+    public String getLastName(String agent) throws IOException {
+        return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(0);
+    }
     public void createItemHashMapObjet(){
         try{
             File file = new File("GO_Securi_Groupe_3/liste.txt");

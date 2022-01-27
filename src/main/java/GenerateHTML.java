@@ -18,7 +18,7 @@ public class GenerateHTML {
     public void createIndexPage() {
 
         fileManager.createArrayAgents();
-        File fileindex = new File("index.html");
+        File fileindex = new File("html/index.html");
 
         try {
             if (!fileindex.exists()) {

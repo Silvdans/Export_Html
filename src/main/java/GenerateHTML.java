@@ -1,20 +1,23 @@
+import java.awt.List;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class GenerateHTML {
 
-    FileManager fileManager = new FileManager();
-    PrintWriter fileOut;
+    private FileManager fileManager;
+    private ArrayList<String> agents;
+    private PrintWriter fileOut;
 
-    public void index() {
 
-        //Variable
+    public GenerateHTML(){
+        this.fileManager = new FileManager();
+        this.agents = fileManager.getListagents();
+    }
+
+    public void createIndexPage() {
+
         fileManager.createArrayAgents();
-        Scanner scanner = new Scanner(System.in);
-        Scanner fileIn; //input file connection
-        //HTML file connection
-        String line = null; // a line from the input file
-
         File fileindex = new File("index.html");
 
         try {
@@ -27,7 +30,6 @@ public class GenerateHTML {
         }
         try {
             fileOut = new PrintWriter(fileindex);
-
             // Ouverture des TAGS HTML
             fileOut.println("<html>");
             fileOut.println("<head>");
@@ -35,8 +37,7 @@ public class GenerateHTML {
             fileOut.println("<body>");
 
             //PRINT de la list d'agents
-            ArrayList<String> agents = fileManager.getListagents();
-            for (String string : agents) {
+            for (String string : this.agents) {
                 fileOut.println("   <br>");
                 fileOut.println("<a href="+string+".html>"+string+"</a>");
                 fileOut.println("   <br>");
@@ -50,16 +51,12 @@ public class GenerateHTML {
             System.out.println("File not found");
         }
     }
-
-
-    public void agents() {
+    public void createHtmlForEachAgents() {
         FileManager fileManager = new FileManager();
-        ArrayList<String> agents = fileManager.getListagents();
-
-        for (String string : agents) {
-
+        ArrayList<String >items;
+        for (String string : this.agents) {
+            //création du fichier s'il n'existe pas
             File fileindex = new File(string+".html");
-
             try {
                 fileOut = new PrintWriter(fileindex);
                 if (!fileindex.exists()) {
@@ -69,11 +66,33 @@ public class GenerateHTML {
                 // Print the exception
                 System.out.print(e.getMessage());
             }
+            // Ouverture tags
+            fileOut.println("<html>");
+            fileOut.println("<head>");
+            fileOut.println("</head>");
+            fileOut.println("<body>");
 
+            //Trouver le fichier
 
-
+            items = fileManager.getListObjectAffectedToAgent(string);
+            System.out.println(items);
+            String check;
+            for (String objet : fileManager.getMap().keySet()){
+                String value = fileManager.getMap().get(objet);
+                if(items.contains(objet)) {
+                    check = "checked";
+                }
+                else{
+                    check ="";
+                }
+                fileOut.println("<label for=\"coding\">"+value+"</label>");
+                fileOut.println("<input type=\"checkbox\" id=\"coding\" name=\"interest\" value=\"coding\" onclick=\"return false;\""+check+">");
+            }
+            // Fermeture des TAGS HTML
+            fileOut.println("</body>");
+            fileOut.println("</html>");
+            fileOut.close();
         }
-
     }
 }
 

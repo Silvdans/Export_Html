@@ -1,0 +1,66 @@
+body{
+    background-color: #379EC1;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('camera.png');
+    background-position: center;
+    background-size: cover;
+
+
+}
+@font-face {
+    font-family: 'Roboto', sans-serif ;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+}
+
+
+
+#main{
+    z-index: 2;
+    height: 70vh;   
+    width: 40%;
+    background-color: white;
+    margin: 15vh auto;  
+    border-radius: 100px;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.image{
+    width: 60%;
+}
+
+img{
+    width: 60%;
+    top: 10px;
+    position: relative;
+    left: 230px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    margin: 0 40px;
+    width: 150px;
+    line-height: 40px;
+    text-align: center;
+
+}
+li{
+    background-color: #659224;
+    margin: 10px;
+    height: 40px;
+    border-radius: 50px;
+}
+ul {
+    list-style-type: none;
+    margin: 30px auto 0 auto;
+    padding: 0;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+li:hover{
+    opacity: 0.5;
+}

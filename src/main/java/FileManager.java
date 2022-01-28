@@ -19,17 +19,17 @@ public class FileManager {
         createItemHashMapObjet();
     }
     public String getFirstName(String agent) throws IOException {
-        return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(1);
+        return Files.readAllLines(Paths.get("html/GO_Securi_Groupe_3/"+agent+".txt")).get(1);
     }
     public String getLastName(String agent) throws IOException {
-        return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(0);
+        return Files.readAllLines(Paths.get("html/GO_Securi_Groupe_3/"+agent+".txt")).get(0);
     }
     public String getImageName(String agent){
-        return "GO_Securi_Groupe_3/"+agent+".jpg";
+        return "html/GO_Securi_Groupe_3/"+agent+".jpg";
     }
     public void createItemHashMapObjet(){
         try{
-            File file = new File("GO_Securi_Groupe_3/liste.txt");
+            File file = new File("html/GO_Securi_Groupe_3/liste.txt");
             FileReader fr = new FileReader(file);
 
             BufferedReader br = new BufferedReader(fr);
@@ -51,7 +51,7 @@ public class FileManager {
         }
     }
     public ArrayList<String> getListObjectAffectedToAgent(String agent){
-        File fileagents = new File("GO_Securi_Groupe_3/"+agent+".txt");
+        File fileagents = new File("html/GO_Securi_Groupe_3/"+agent+".txt");
         ArrayList<String> items = new ArrayList<String>();
         try {
             Scanner scanner = new Scanner(fileagents);
@@ -68,7 +68,7 @@ public class FileManager {
     }
     public void createArrayAgents(){
         try{
-            File file = new File("GO_Securi_Groupe_3/agents.txt");
+            File file = new File("html/GO_Securi_Groupe_3/agents.txt");
 
             FileReader fr2 = new FileReader(file);
             BufferedReader br = new BufferedReader(fr2);

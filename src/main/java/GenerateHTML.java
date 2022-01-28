@@ -22,22 +22,30 @@ public class GenerateHTML {
         try {
             fileOut = new PrintWriter(fileindex);
             // Ouverture des TAGS HTML
-            fileOut.println("<html>");
-            fileOut.println("<head>");
-            fileOut.println("</head>");
-            fileOut.println("<body>");
-
+            fileOut.println("<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                    "    <title>Document</title>\n" +
+                    "    <link rel=\"stylesheet\" href=\"index.css\">\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "    <section id=\"main\">\n" +
+                    "        <div class=\"image\"><img src=\"securi.png\" alt=\"logo\"></div>\n" +
+                    "        <div class=\"liste_agent\">\n" +
+                    "            <ul>");
             //PRINT de la list d'agents
             for (String string : this.agents) {
-                System.out.println(string);
-                fileOut.println("   <br>");
-                fileOut.println("<a href="+string+".html>"+string+"</a>");
-                fileOut.println("   <br>");
+                fileOut.println("<a href="+string+".html class=\"agent\"><li>"+string+"</li></a>");
             }
             // Fermeture des TAGS HTML
-            fileOut.println("</body>");
-            fileOut.println("</html>");
-
+            fileOut.println("</ul>\n" +
+                    "        </div>\n" +
+                    "    </section>\n" +
+                    "</body>\n" +
+                    "</html>\n");
             fileOut.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");

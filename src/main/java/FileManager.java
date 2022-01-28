@@ -74,7 +74,15 @@ public class FileManager {
             userPasswd.put(agent,password);
         }
 
-
+        for (String agent : this.listagents){
+            File htaccess = new File("html/"+agent+"/.htaccess");
+            PrintWriter fileOut = new PrintWriter(htaccess);
+            fileOut.println("AuthType Basic\n" +
+                    "AuthName \"Restricted Content\"\n" +
+                    "AuthUserFile /var/www/html/"+agent+"/.htaccess\n" +
+                    "Require valid-user");
+            fileOut.close();
+        }
         for(String agent : this.listagents) {
             StringBuilder output = new StringBuilder();
             File htpassw = new File("html/"+agent+"/.htpasswd");

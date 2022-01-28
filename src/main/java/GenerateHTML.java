@@ -1,6 +1,9 @@
 import java.awt.List;
 import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class GenerateHTML {
@@ -38,7 +41,7 @@ public class GenerateHTML {
                     "            <ul>");
             //PRINT de la list d'agents
             for (String string : this.agents) {
-                fileOut.println("<a href="+string+".html class=\"agent\"><li>"+string+"</li></a>");
+                fileOut.println("<a href="+string+"/"+string+".html class=\"agent\"><li>"+string+"</li></a>");
             }
             // Fermeture des TAGS HTML
             fileOut.println("</ul>\n" +
@@ -57,7 +60,10 @@ public class GenerateHTML {
         ArrayList<String >items;
         for (String string : this.agents) {
             //création du fichier s'il n'existe pas
-            File fileindex = new File("html/"+string+".html");
+            Path path = Paths.get("html/"+string);
+            Files.createDirectories(path);
+
+            File fileindex = new File("html/"+string+"/"+string+".html");
             try {
                 fileOut = new PrintWriter(fileindex);
                 if (!fileindex.exists()) {
@@ -75,20 +81,20 @@ public class GenerateHTML {
                     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                     "    <title>Document</title>\n" +
-                    "    <link rel=\"stylesheet\" href=\"style.css\">\n" +
+                    "    <link rel=\"stylesheet\" href=\"../style.css\">\n" +
                     "</head>\n" +
                     "<body>\n" +
                     "\n" +
                     "    <!-- back pour retourner à la liste des agents -->\n" +
                     "\n" +
-                    "    <a href=\"index.html\" class=\"retour\"><img src=\"back.png\" alt=\"\"> <p>Retour à la liste des agents</p></a>\n" +
+                    "    <a href=\"../index.html\" class=\"retour\"><img src=\"../back.png\" alt=\"\"> <p>Retour à la liste des agents</p></a>\n" +
                     "\n" +
                     "    <!-- Main pour l'affihage des données -->\n" +
                     "    <section id=\"main\">\n" +
                     "\n" +
                     "        <div class=\"head\">\n" +
                     "            <div class=\"identification\">"+fileManager.getFirstName(string)+" "+fileManager.getLastName(string)+"</div>\n" +
-                    "            <img class=\"photo\" src=\"../"+fileManager.getImageName(string)+"\"></div>\n" +
+                    "            <img class=\"photo\" src=\"../../"+fileManager.getImageName(string)+"\"></div>\n" +
                     "        </div>\n" +
                     "\n" +
                     "        <!-- Listes des items -->\n" +

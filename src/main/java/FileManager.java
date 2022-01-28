@@ -74,20 +74,21 @@ public class FileManager {
             userPasswd.put(agent,password);
         }
 
-        File htpassw = new File("html/.htpasswd");
-        PrintWriter fileOut = new PrintWriter(htpassw);
-        StringBuilder output = new StringBuilder();
-        for(String agent : this.listagents) {
-            Process process = Runtime.getRuntime().exec("htpasswd -nbm " + agent + " " + userPasswd.get(agent));
 
+        for(String agent : this.listagents) {
+            StringBuilder output = new StringBuilder();
+            File htpassw = new File("html/"+agent+"/.htpasswd");
+            PrintWriter fileOut = new PrintWriter(htpassw);
+            Process process = Runtime.getRuntime().exec("htpasswd -nbm " + agent + " " + userPasswd.get(agent));
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             String line;
             line = reader.readLine();
-            output.append(line + "\n");
+            output.append(line).append("\n");
+            fileOut.print(output);
+            fileOut.close();
         }
-        fileOut.print(output);
-        fileOut.close();
+
     }
     public void createArrayAgents(){
         try{

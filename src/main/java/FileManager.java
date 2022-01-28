@@ -79,7 +79,7 @@ public class FileManager {
             PrintWriter fileOut = new PrintWriter(htaccess);
             fileOut.println("AuthType Basic\n" +
                     "AuthName \"Restricted Content\"\n" +
-                    "AuthUserFile /var/www/html/"+agent+"/.htaccess\n" +
+                    "AuthUserFile /var/www/html/"+agent+"/.htpasswd\n" +
                     "Require valid-user");
             fileOut.close();
         }

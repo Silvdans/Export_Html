@@ -80,7 +80,7 @@ public class GenerateHTML {
                     "\n" +
                     "        <div class=\"head\">\n" +
                     "            <div class=\"identification\">"+fileManager.getFirstName(string)+" "+fileManager.getLastName(string)+"</div>\n" +
-                    "            <div class=\"photo\"></div>\n" +
+                    "            <img class=\"photo\" src=\"../"+fileManager.getImageName(string)+"\"></div>\n" +
                     "        </div>\n" +
                     "\n" +
                     "        <!-- Listes des items -->\n" +

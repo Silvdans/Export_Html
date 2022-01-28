@@ -24,6 +24,9 @@ public class FileManager {
     public String getLastName(String agent) throws IOException {
         return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(0);
     }
+    public String getImageName(String agent){
+        return "GO_Securi_Groupe_3/"+agent+".jpg";
+    }
     public void createItemHashMapObjet(){
         try{
             File file = new File("GO_Securi_Groupe_3/liste.txt");

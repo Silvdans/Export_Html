@@ -10,7 +10,7 @@ public class GenerateHTML {
     private PrintWriter fileOut;
 
 
-    public GenerateHTML(){
+    public GenerateHTML() throws IOException {
         this.fileManager = new FileManager();
         this.agents = fileManager.getListagents();
     }

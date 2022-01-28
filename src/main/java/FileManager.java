@@ -12,11 +12,12 @@ public class FileManager {
     private final HashMap<String,String> map;
     private ArrayList<String> listagents;
 
-    public FileManager(){
+    public FileManager() throws IOException {
         listagents = new ArrayList<>();
         map = new HashMap<>();
         createArrayAgents();
         createItemHashMapObjet();
+        createhtpasswd();
     }
     public String getFirstName(String agent) throws IOException {
         return Files.readAllLines(Paths.get("html/GO_Securi_Groupe_3/"+agent+".txt")).get(1);
@@ -65,6 +66,28 @@ public class FileManager {
             e.printStackTrace();
         }
         return items;
+    }
+    public void createhtpasswd() throws IOException {
+        HashMap<String,String> userPasswd = new HashMap<>();
+        for (String agent : this.listagents){
+            String password = Files.readAllLines(Paths.get("html/GO_Securi_Groupe_3/"+agent+".txt")).get(3);
+            userPasswd.put(agent,password);
+        }
+
+        File htpassw = new File("html/.htpasswd");
+        PrintWriter fileOut = new PrintWriter(htpassw);
+        StringBuilder output = new StringBuilder();
+        for(String agent : this.listagents) {
+            Process process = Runtime.getRuntime().exec("htpasswd -nbm " + agent + " " + userPasswd.get(agent));
+
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+            String line;
+            line = reader.readLine();
+            output.append(line + "\n");
+        }
+        fileOut.print(output);
+        fileOut.close();
     }
     public void createArrayAgents(){
         try{

@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted Content"
-AuthUserFile /var/www/html/jpicard/.htpasswd
-Require valid-user

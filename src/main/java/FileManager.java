@@ -15,6 +15,7 @@ public class FileManager {
     public FileManager() throws IOException {
         listagents = new ArrayList<>();
         map = new HashMap<>();
+        Files.createDirectories(Paths.get("html"));
         createArrayAgents();
         createItemHashMapObjet();
         createhtpasswd();
@@ -73,30 +74,26 @@ public class FileManager {
             String password = Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(3);
             userPasswd.put(agent,password);
         }
-
-        for (String agent : this.listagents){
-            File htaccess = new File("html/"+agent+"/.htaccess");
-            PrintWriter fileOut = new PrintWriter(htaccess);
-            fileOut.println("AuthType Basic\n" +
-                    "AuthName \"Restricted Content\"\n" +
-                    "AuthUserFile /usr/local/apache2/htdocs/"+agent+"/.htpasswd\n" +
-                    "Require valid-user");
-            fileOut.close();
-        }
+        File htaccess = new File("html/.htaccess");
+        PrintWriter fileOut = new PrintWriter(htaccess);
+        fileOut.println("AuthType Basic\n" +
+                "AuthName \"Restricted Content\"\n" +
+                "AuthUserFile /usr/local/apache2/htdocs/.htpasswd\n" +
+                "Require valid-user");
+        fileOut.close();
+        File htpassw = new File("html/.htpasswd");
+        StringBuilder output = new StringBuilder();
+        PrintWriter fileOutpasswd = new PrintWriter(htpassw);
         for(String agent : this.listagents) {
-            StringBuilder output = new StringBuilder();
-            File htpassw = new File("html/"+agent+"/.htpasswd");
-            PrintWriter fileOut = new PrintWriter(htpassw);
             Process process = Runtime.getRuntime().exec("htpasswd -nbm " + agent + " " + userPasswd.get(agent));
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             String line;
             line = reader.readLine();
             output.append(line).append("\n");
-            fileOut.print(output);
-            fileOut.close();
         }
-
+        fileOutpasswd.print(output);
+        fileOutpasswd.close();
     }
     public void createArrayAgents(){
         try{

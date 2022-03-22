@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted Content"
-AuthUserFile /var/www/html/dpaquet/.htpasswd
-Require valid-user

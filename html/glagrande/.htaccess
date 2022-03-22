@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted Content"
-AuthUserFile /var/www/html/glagrande/.htpasswd
-Require valid-user

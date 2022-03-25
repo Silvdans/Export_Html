@@ -35,7 +35,7 @@ public class GenerateHTML {
                     "    <link rel=\"stylesheet\" href=\"index.css\">\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "    <section id=\"main\">\n" +
+                    "    <section class=\"main\">\n" +
                     "        <div class=\"image\"><img src=\"securi.png\" alt=\"logo\"></div>\n" +
                     "        <div class=\"liste_agent\">\n" +
                     "            <ul>");

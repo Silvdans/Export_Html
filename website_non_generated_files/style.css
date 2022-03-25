@@ -1,5 +1,5 @@
 body{
-  background-color: #131114;  
+    background-color: #131114;
 }
 
 @font-face {
@@ -8,11 +8,11 @@ body{
 }
 #main{
     width: 70%;
-    height: 80vh;    
+    height: 80vh;
     background-color: white;
     margin: 5vh auto 0 auto;
     font-family: 'Roboto', sans-serif;
-    
+
 }
 
 .retour{
@@ -47,7 +47,7 @@ body{
     background-color: chartreuse;
     margin-right: 10px;
     margin-top: 10px;
-    
+
 }
 
 .objets{
@@ -65,4 +65,36 @@ body{
 
 .objets div label{
     margin-right: 10px;
+}
+
+@media screen and (max-width: 400px) {
+
+    #main{
+        width: 100%;
+    }
+
+    .head{
+        display: flex;
+        flex-wrap: wrap-reverse;
+        width: 100%;
+    }
+
+    .identification{
+        margin :0 auto;
+        margin-top: 10px;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    .photo{
+        background-color: chartreuse;
+        margin: 20px auto;
+        border-radius: 30px;
+    }
+
+    .objets{
+        width: 100%;
+        margin: 40px auto;
+    }
+
 }

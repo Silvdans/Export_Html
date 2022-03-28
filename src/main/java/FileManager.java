@@ -5,28 +5,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FileManager extends Thread{
+public class FileManager {
 
     private final HashMap<String,String> map;
     private ArrayList<String> listagents;
 
-    public FileManager() throws IOException{
+    public FileManager() throws IOException {
         listagents = new ArrayList<>();
         map = new HashMap<>();
         Files.createDirectories(Paths.get("html"));
-        this.start();
-    }
-    @Override
-    public void run() {
         createArrayAgents();
         createItemHashMapObjet();
-        try {
-            createhtpasswd();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createhtpasswd();
     }
-
     public String getFirstName(String agent) throws IOException {
         return Files.readAllLines(Paths.get("GO_Securi_Groupe_3/"+agent+".txt")).get(1);
     }

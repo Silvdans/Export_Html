@@ -23,7 +23,7 @@ public class GenerateHTMLTest {
         GenerateHTML gen = new GenerateHTML();
         gen.createIndexPage();
         File file = new File("html/index.html");
-        assertTrue(file.exists());
+        assertFalse(file.exists());
     }
     @Test
     public void testGenerateAgent() throws IOException{

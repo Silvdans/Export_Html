@@ -28,6 +28,7 @@ public class GenerateHTMLTest {
     @Test
     public void testGenerateAgent() throws IOException{
         GenerateHTML gen = new GenerateHTML();
+        gen.getFileManager().createArrayAgents();
         String agent = gen.getFileManager().getListagents().get(1);
         gen.createHtmlForEachAgents();
         File file = new File("html/"+agent+"/"+agent+".html");

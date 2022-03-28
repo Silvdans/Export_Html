@@ -15,6 +15,7 @@ public class GenerateHTML {
 
     public GenerateHTML() throws IOException {
         this.fileManager = new FileManager();
+        fileManager.start();
         this.agents = fileManager.getListagents();
     }
 

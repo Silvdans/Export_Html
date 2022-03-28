@@ -126,6 +126,9 @@ public class GenerateHTML {
             fileOut.close();
         }
     }
+    public FileManager getFileManager() {
+        return fileManager;
+    }
 }
 
 

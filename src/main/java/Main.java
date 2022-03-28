@@ -6,7 +6,6 @@ public class Main {
         GenerateHTML generateHTML= new GenerateHTML();
         generateHTML.createIndexPage();
         generateHTML.createHtmlForEachAgents();
-
         System.exit(0);
     }
 }
